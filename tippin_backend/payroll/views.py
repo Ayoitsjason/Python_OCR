@@ -12,7 +12,9 @@ logger = logging.getLogger(__name__)
 def scan(request):
   if request.method == 'POST':
     return JsonResponse("success", safe=False)
-  else:
+  elif request.method == 'GET':
+    return JsonResponse("success", safe=False)
+  else:  
     return HttpResponseBadRequest("Unable to post")
 
     
