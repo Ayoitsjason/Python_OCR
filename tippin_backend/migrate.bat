@@ -1,1 +1,1 @@
-python manage.py migrate portal
+python manage.py migrate payroll

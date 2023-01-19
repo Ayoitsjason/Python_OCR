@@ -1,1 +1,1 @@
-python manage.py makemigrations portal
+python manage.py makemigrations payroll
