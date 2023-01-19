@@ -3,7 +3,7 @@ from django.urls import path
 from payroll import views
 
 payroll = [
-  path('/scans', views.scans, name='payroll_scans'),
+  path('/scan', views.scan, name='payrolls_scans'),
 ]
 
 urlpatterns = [
