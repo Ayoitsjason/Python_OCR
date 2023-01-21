@@ -1,9 +1,20 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import PayrollImageForm from "./components/PayrollImageForm.js";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <div className="App-header">
+        <Container>
+          <Row>
+            <PayrollImageForm />
+          </Row>
+        </Container>
+      </div>
     </div>
   );
 }
