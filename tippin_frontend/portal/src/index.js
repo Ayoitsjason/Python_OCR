@@ -13,11 +13,11 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "scan",
+        path: "/",
         element: <PayrollImageForm />,
       },
       {
-        path: "scans",
+        path: "history",
         element: <Scans />,
       },
     ],

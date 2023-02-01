@@ -11,14 +11,14 @@ function App() {
       <Navbar bg="light" variant="light">
         <Container>
           <Navbar.Brand as={Link} to="/">
-            Tippin
+            OCR
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/scan">
+            <Nav.Link as={Link} to="/">
               Scan
             </Nav.Link>
-            <Nav.Link as={Link} to="/scans">
-              Scans
+            <Nav.Link as={Link} to="/history">
+              History
             </Nav.Link>
           </Nav>
         </Container>
