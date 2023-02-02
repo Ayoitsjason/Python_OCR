@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http.response import HttpResponseBadRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
 import logging
 
 logging.basicConfig(level=logging.INFO)

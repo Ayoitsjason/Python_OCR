@@ -20,7 +20,7 @@ function FileUploadForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    scanFile(e);
+    scanFile(e.target);
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -42,11 +42,11 @@ function FileUploadForm() {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="file">
             <Form.Label>Upload Photo</Form.Label>
-            <Form.Control type="file" onChange={handleFileChange} />
+            <Form.Control name="file" type="file" onChange={handleFileChange} />
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Text orientation?</Form.Label>
-            <Form.Select>
+            <Form.Select name="orientation">
               <option>Rows</option>
               <option>Columns</option>
             </Form.Select>
