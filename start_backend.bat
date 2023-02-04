@@ -1,2 +1,2 @@
-cd tippin_backend
+cd ocr_backend
 python manage.py runserver

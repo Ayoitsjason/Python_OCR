@@ -1,2 +1,2 @@
-cd tippin_frontend/portal
+cd ocr_frontend/portal
 npm start
