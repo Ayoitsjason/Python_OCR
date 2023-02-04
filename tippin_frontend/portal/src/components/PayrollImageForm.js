@@ -9,15 +9,10 @@ import { MyTexts } from "../contexts/texts";
 import { scanFile } from "../api/PayrollService";
 
 function FileUploadForm() {
-  const [file, setFile] = useState(null);
   const [success, setSuccess] = useState(false);
   const [failed, setFailed] = useState(false);
   const [loading, setLoading] = useState(false);
   const { texts, setTexts } = useContext(MyTexts);
-
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,7 +50,7 @@ function FileUploadForm() {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="file">
             <Form.Label>Upload Photo</Form.Label>
-            <Form.Control name="file" type="file" onChange={handleFileChange} />
+            <Form.Control name="file" type="file" />
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Text Format?</Form.Label>
