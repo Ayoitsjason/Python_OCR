@@ -1,8 +1,8 @@
 from django.http.response import HttpResponseBadRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-import logging
 from payroll.utils import tesseract 
 
+import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 # Create your views here.
@@ -11,12 +11,12 @@ logger = logging.getLogger(__name__)
 def scan(request):
   if request.method == 'POST':
     file = request.FILES.get('file')
-    data = request.POST.get('orientation')
+    data = request.POST.get('format')
     logger.info('Start scanning image')
     try:
       text = tesseract.imageOCR(file,data)
       logger.info('Finished scanning image')
-      json = {{'status': 200},{"data": text },{'error': {}}}
+      json = "{{'status': 200},{'data': " + str(text) + "},{'error': {}}}"
       return JsonResponse(json, safe=False)
     except Exception as e:
         logger.exception(e)

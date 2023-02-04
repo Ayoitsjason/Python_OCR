@@ -10,15 +10,15 @@ load_dotenv()
 
 pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT')
 
-def imageOCR(file,orientation):
+def imageOCR(file,format):
   myconfig = r"--psm 3"
-  if orientation == 'Column Text':
+  if format == 'Column Text':
     myconfig = r"--psm 4"
-  elif orientation == 'Block Text':
+  elif format == 'Block Text':
     myconfig = r"--psm 6"
-  elif orientation == 'Single Text Line':
+  elif format == 'Single Text Line':
     myconfig = r"--psm 7"
-  elif orientation == 'Single Word':
+  elif format == 'Single Word':
     myconfig = r"--psm 8"
   image_data = np.asarray(bytearray(file.read()), dtype=np.uint8)
   img = cv2.imdecode(image_data, cv2.IMREAD_UNCHANGED)

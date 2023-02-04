@@ -45,10 +45,13 @@ function FileUploadForm() {
             <Form.Control name="file" type="file" onChange={handleFileChange} />
           </Form.Group>
           <Form.Group as={Col}>
-            <Form.Label>Text orientation?</Form.Label>
-            <Form.Select name="orientation">
-              <option>Rows</option>
-              <option>Columns</option>
+            <Form.Label>Text Format?</Form.Label>
+            <Form.Select name="format">
+              <option>Row Text</option>
+              <option>Column Text</option>
+              <option>Block Text</option>
+              <option>Single Text Line</option>
+              <option>Single Word</option>
             </Form.Select>
           </Form.Group>
         </Row>
