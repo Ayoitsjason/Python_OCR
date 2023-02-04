@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Spinner from "react-bootstrap/Spinner";
+import { MyTexts } from "../contexts/texts";
 import { scanFile } from "../api/PayrollService";
 
 function FileUploadForm() {
@@ -12,6 +13,7 @@ function FileUploadForm() {
   const [success, setSuccess] = useState(false);
   const [failed, setFailed] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { texts, setTexts } = useContext(MyTexts);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -20,9 +22,20 @@ function FileUploadForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    scanFile(e.target);
+    const promise = scanFile(e.target);
+    promise
+      .then((res) => {
+        setSuccess(true);
+        setTexts([...texts, res.data]);
+      })
+      .catch((err) => {
+        setFailed(true);
+        console.error(err);
+      });
     setTimeout(() => {
       setLoading(false);
+      setSuccess(false);
+      setFailed(false);
     }, 1000);
   };
 

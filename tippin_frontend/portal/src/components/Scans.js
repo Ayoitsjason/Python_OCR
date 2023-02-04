@@ -1,31 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
+import { MyTexts } from "../contexts/texts";
 import Scan from "./Scan";
 
 const Scans = () => {
-  const [cardData, setCardData] = useState([
-    {
-      id: "123",
-      title: "test",
-      text: "trying",
-    },
-    {
-      id: "123",
-      title: "test",
-      text: "trying",
-    },
-    {
-      id: "123",
-      title: "test",
-      text: "trying",
-    },
-  ]);
+  const { texts } = useContext(MyTexts);
 
   return (
     <ListGroup>
-      {cardData.map((card, index) => (
+      {texts.map((text, index) => (
         <ListGroup.Item key={index} className="my-1">
-          <Scan key={card.id} title={card.title} text={card.text} />
+          <Scan text={text} />
         </ListGroup.Item>
       ))}
     </ListGroup>

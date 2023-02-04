@@ -11,7 +11,7 @@ export const scanFile = async (form) => {
       },
     };
     let res = await axios.post(`${BACKEND_URL}/payroll/scan`, formData, config);
-    console.log(res);
+    return res;
   } catch (err) {
     console.error(err);
   }

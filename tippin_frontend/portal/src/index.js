@@ -1,32 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
-import Scans from "./components/Scans";
-import PayrollImageForm from "./components/PayrollImageForm.js";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <PayrollImageForm />,
-      },
-      {
-        path: "history",
-        element: <Scans />,
-      },
-    ],
-  },
-]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );
 
