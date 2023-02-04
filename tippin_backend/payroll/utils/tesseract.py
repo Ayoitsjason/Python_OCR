@@ -10,9 +10,19 @@ load_dotenv()
 
 pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT')
 
-def imageOCR(file):
+def imageOCR(file,orientation):
   myconfig = r"--psm 3"
-  img = cv2.imread(file)
+  if orientation == 'Column Text':
+    myconfig = r"--psm 4"
+  elif orientation == 'Block Text':
+    myconfig = r"--psm 6"
+  elif orientation == 'Single Text Line':
+    myconfig = r"--psm 7"
+  elif orientation == 'Single Word':
+    myconfig = r"--psm 8"
+  image_data = np.asarray(bytearray(file.read()), dtype=np.uint8)
+  img = cv2.imdecode(image_data, cv2.IMREAD_UNCHANGED)
+
   norm_img = np.zeros((img.shape[0], img.shape[1]))
   img = cv2.normalize(img, norm_img, 0, 255, cv2.NORM_MINMAX)
   img = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)[1]
@@ -23,6 +33,8 @@ def imageOCR(file):
   return text
 
   # FILENAME = 'apple.jpeg'
+  # myconfig = r"--psm 3"
+  # img = cv2.imread(FILENAME)
   # height, width, _ = img.shape
   # data = pytesseract.image_to_data(img, config=myconfig, output_type=Output.DICT)
   # amount_boxes = len(data['text'])
