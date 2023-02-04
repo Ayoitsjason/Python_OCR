@@ -16,11 +16,10 @@ def scan(request):
     try:
       text = tesseract.imageOCR(file,data)
       logger.info('Finished scanning image')
-      json = "{{'status': 200},{'data': " + str(text) + "},{'error': {}}}"
-      return JsonResponse(json, safe=False)
+      return JsonResponse(text, safe=False)
     except Exception as e:
         logger.exception(e)
-        return JsonResponse({'status': 500},{'data': {}},{'error': {'message': e.args[0]}})
+        return JsonResponse(e, safe=False)
   elif request.method == 'GET':
     return JsonResponse("success", safe=False)
   else:  
