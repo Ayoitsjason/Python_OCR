@@ -2,7 +2,7 @@ Django
 python-dotenv==0.21.0
 djangorestframework==3.14.0
 django-cors-headers==3.13.0
-pytesseract==0.3.10
+pytesseract
 numpy==1.24.1
 pillow==9.4.0
 opencv-python==4.7.0.68
