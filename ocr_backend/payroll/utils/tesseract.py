@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT')
+pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT')
 
 def imageOCR(file,format):
   myconfig = r"--psm 3"
