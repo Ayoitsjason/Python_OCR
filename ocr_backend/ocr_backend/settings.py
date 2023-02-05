@@ -167,7 +167,7 @@ logging.config.dictConfig({
             'handlers': ['console'],
         },
         # Our application code
-        'portal': {
+        'payroll': {
             'level': LOGLEVEL,
             'handlers': ['console'],
             # Avoid double logging because of root logger

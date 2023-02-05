@@ -16,5 +16,6 @@ export const scanFile = async (form) => {
     return res;
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };
