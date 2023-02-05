@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const BACKEND_URL = "http://127.0.0.1:8000";
-
 export const scanFile = async (form) => {
   const formData = new FormData(form);
   try {
@@ -10,7 +8,11 @@ export const scanFile = async (form) => {
         "content-type": "multipart/form-data",
       },
     };
-    let res = await axios.post(`${BACKEND_URL}/payroll/scan`, formData, config);
+    let res = await axios.post(
+      `${process.env.REACT_BACKEND_URL}/payroll/scan`,
+      formData,
+      config
+    );
     return res;
   } catch (err) {
     console.error(err);
