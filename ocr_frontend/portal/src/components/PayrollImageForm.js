@@ -23,15 +23,14 @@ function FileUploadForm() {
         setSuccess(true);
         setTexts([...texts, res.data]);
       })
-      .catch((err) => {
+      .catch(() => {
         setFailed(true);
-        console.error(err);
       });
     setTimeout(() => {
       setLoading(false);
       setSuccess(false);
       setFailed(false);
-    }, 1000);
+    }, 1500);
   };
 
   return (
