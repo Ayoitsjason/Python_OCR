@@ -9,7 +9,7 @@ export const scanFile = async (form) => {
       },
     };
     let res = await axios.post(
-      `${process.env.REACT_BACKEND_URL}/payroll/scan`,
+      `${process.env.REACT_APP_BACKEND_URL}/payroll/scan`,
       formData,
       config
     );
