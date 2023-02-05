@@ -6,3 +6,4 @@ pytesseract
 numpy
 pillow==9.4.0
 opencv-python==4.7.0.68
+gunicorn
