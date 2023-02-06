@@ -25,12 +25,14 @@ function FileUploadForm() {
       })
       .catch(() => {
         setFailed(true);
+      })
+      .finally(() => {
+        setLoading(false);
+        setTimeout(() => {
+          setSuccess(false);
+          setFailed(false);
+        }, 1500);
       });
-    setTimeout(() => {
-      setLoading(false);
-      setSuccess(false);
-      setFailed(false);
-    }, 1500);
   };
 
   return (

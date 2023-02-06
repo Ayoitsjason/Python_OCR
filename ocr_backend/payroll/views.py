@@ -14,12 +14,14 @@ def scan(request):
     data = request.POST.get('format')
     logger.info('Start scanning image')
     try:
+      if file is None:
+        raise ValueError("Empty File")
       text = tesseract.imageOCR(file,data)
       logger.info('Finished scanning image')
       return JsonResponse(text, safe=False)
     except Exception as e:
-        logger.exception(e)
-        return HttpResponseBadRequest("Unable to scan")
+      logger.exception(e)
+      return HttpResponseBadRequest("Unable to scan")
   elif request.method == 'GET':
     return JsonResponse("success", safe=False)
   else:  
