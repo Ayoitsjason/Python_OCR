@@ -1,4 +1,5 @@
 venv
+ocr_backend/Dockerfile
 ocr_backend/.env
 ocr_backend/payroll/utils/apple.jpeg
 *.pyc
