@@ -1,0 +1,4 @@
+.env
+*.pyc
+utils/apple.jpeg
+.git
