@@ -6,6 +6,9 @@ FROM python:3.8
 # Install Tesseract
 RUN apt-get update && apt-get install -y ffmpeg libsm6 libxext6 tesseract-ocr
 
+# Mount Secrets
+RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cat /etc/secrets/.env
+
 # Set the working directory in the container
 WORKDIR /app
 
