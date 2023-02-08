@@ -1,3 +1,5 @@
+# syntax = docker/dockerfile:1.2
+
 # Use an official Python runtime as the base image
 FROM python:3.8
 
