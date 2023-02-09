@@ -5,4 +5,5 @@ services:
     rootDir: ocr_backend
     buildCommand: Docker build .
     env: docker
-    env_file: /etc/secrets/.env
+    envVars:
+      - fromGroup: ocr_docker
