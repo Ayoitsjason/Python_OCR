@@ -6,5 +6,5 @@ services:
     dockerfilePath: ./Dockerfile
     dockerContext: ./
     env: docker
-    envVars:
-      - fromGroup: ocr_docker
+    buildCommand: docker build -t ocr_backend:latest .
+    startCommand: docker run -d --rm -p 8000:8000 --env-file /etc/secrets/.env ocr_backend:latest
