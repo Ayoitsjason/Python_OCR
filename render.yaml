@@ -3,7 +3,6 @@ services:
   - type: web
     name: "ocr_docker"
     rootDir: ocr_backend
-    buildCommand: Docker build .
     env: docker
     envVars:
       - fromGroup: ocr_docker
