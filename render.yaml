@@ -1,6 +1,9 @@
 services:
   # A Docker web service
-  backend:
-    iamge: ocr_docker
+  - type: web
+    name: "ocr_docker"
     rootDir: ocr_backend
-    env_file: /etc/secrets/.env
+    buildCommand: Docker build .
+    env: docker
+    envVars:
+      - fromGroup: ocr_docker
