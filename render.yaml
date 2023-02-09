@@ -1,7 +1,8 @@
 services:
   # A Docker web service
-  ocr_docker:
+  backend:
     - type: web
+      name: "ocr_docker"
       build: ./ocr_backend
       context: ./ocr_backend
       env: docker
