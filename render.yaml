@@ -1,6 +1,10 @@
 services:
   # A Docker web service
-  - type: web
-    image: ocr_docker
-    rootDir: ocr_backend
-    env_file: /etc/secrets/.env
+  my_backend:
+    - type: web
+      build: ./ocr_backend
+      context: ./ocr_backend
+      image: ocr_docker
+      env: docker
+      rootDir: ocr_backend
+      env_file: /etc/secrets/.env
