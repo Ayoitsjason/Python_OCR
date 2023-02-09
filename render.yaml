@@ -2,8 +2,7 @@ services:
   # A Docker web service
   - type: web
     name: "ocr_docker"
-    build: ./ocr_backend
-    context: ./ocr_backend
-    env: docker
     rootDir: ocr_backend
+    buildCommand: Docker build .
+    env: docker
     env_file: /etc/secrets/.env
