@@ -19,11 +19,6 @@ RUN pip install -r requirements.txt
 COPY . /app
 
 # Set environment variables
-ARG DJANGO_SECRET_KEY
-ARG RENDER_EXTERNAL_HOSTNAME
-
-ENV DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
-ENV RENDER_EXTERNAL_HOSTNAME=$RENDER_EXTERNAL_HOSTNAME
 
 # Record which port you will expose
 EXPOSE 8000
