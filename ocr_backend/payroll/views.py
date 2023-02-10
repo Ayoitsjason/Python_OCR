@@ -1,6 +1,7 @@
 from django.http.response import HttpResponseBadRequest, HttpResponseNotFound, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from payroll.utils import tesseract 
+# import timeit
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -16,6 +17,8 @@ def scan(request):
     try:
       if file is None:
         raise ValueError("Empty File")
+      # time = timeit.timeit(lambda: tesseract.imageOCR(file,data), number=1)
+      # print("Time taken: ", time, "seconds")
       text = tesseract.imageOCR(file,data)
       logger.info('Finished scanning image')
       return JsonResponse(text, safe=False)
@@ -26,13 +29,3 @@ def scan(request):
     return JsonResponse("success", safe=False)
   else:  
     return HttpResponseNotFound("Not Found")
-
-# {
-#     "status": <HTTP status code>,
-#     "data": {
-#         // data payload, if applicable
-#     },
-#     "error": {
-#         // error information, if applicable
-#     }
-# }
