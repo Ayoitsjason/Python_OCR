@@ -9,7 +9,7 @@ Link to Project: https://ocr-frontend.onrender.com
 
 Front End: React and Bootstrap
 
-Back End: Python, Django, Docker
+Back End: Python, Django, and Docker
 
 # Optimizations
 
