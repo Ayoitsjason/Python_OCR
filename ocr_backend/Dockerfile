@@ -5,12 +5,9 @@ FROM python:3.8
 
 # Install Tesseract
 RUN apt-get update && apt-get install -y ffmpeg libsm6 libxext6 tesseract-ocr
-RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cat /etc/secrets/.env
 
 # Set the working directory in the container
 WORKDIR /app
-VOLUME .env
-RUN /etc/secrets/.env:/app/.env
 
 # Copy the requirements.txt file to the container
 COPY requirements.txt /app
@@ -22,6 +19,8 @@ RUN pip install -r requirements.txt
 COPY . /app
 
 # Set environment variables
+ENV DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
+ENV RENDER_EXTERNAL_HOSTNAME=$RENDER_EXTERNAL_HOSTNAME
 
 # Record which port you will expose
 EXPOSE 8000
