@@ -20,6 +20,7 @@ def imageOCR(file,format):
     myconfig = r"--psm 7"
   elif format == 'Single Word':
     myconfig = r"--psm 8"
+
   image_data = np.asarray(bytearray(file.read()), dtype=np.uint8)
   img = cv2.imdecode(image_data, cv2.IMREAD_UNCHANGED)
 
@@ -27,7 +28,8 @@ def imageOCR(file,format):
   img = cv2.normalize(img, norm_img, 0, 255, cv2.NORM_MINMAX)
   img = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)[1]
   img = cv2.GaussianBlur(img, (1, 1), 0)
-
+  img = img.astype(np.uint8)
+  
   text = pytesseract.image_to_string(img,config=myconfig)
 
   return text
@@ -48,3 +50,5 @@ def imageOCR(file,format):
   # img = cv2.resize(img, (1000,1000), interpolation=cv2.INTER_AREA)
   # cv2.imshow("img", img)
   # cv2.waitKey(0)
+
+  
