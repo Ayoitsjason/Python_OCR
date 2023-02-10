@@ -7,9 +7,9 @@ Link to Project: https://ocr-frontend.onrender.com
 
 # How It's Made:
 
-Front End
+Front End: React and Bootstrap
 
-Back End
+Back End: Python, Django, Docker
 
 # Optimizations
 
