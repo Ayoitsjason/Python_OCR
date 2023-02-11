@@ -1,4 +1,7 @@
 .env
 *.pyc
 utils/apple.jpeg
+tests
 .git
+.benchmarks
+.pytest_cache
