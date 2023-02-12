@@ -1,4 +1,4 @@
-from ocr_backend.payroll.utils.tesseract import imageOCR
+from ..utils.tesseract import imageOCR
 import pytest
 
 @pytest.mark.benchmark
