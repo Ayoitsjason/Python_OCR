@@ -17,7 +17,6 @@ def imageOCR(file,format):
   image_data = np.asarray(bytearray(file.read()), dtype=np.uint8)
   img = cv2.imdecode(image_data, cv2.IMREAD_UNCHANGED)
   
-  img = reduceImgSize(img)
   norm_img = np.zeros((img.shape[0], img.shape[1]))
   img = cv2.normalize(img, norm_img, 0, 255, cv2.NORM_MINMAX)
   img = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)[1]
@@ -28,14 +27,14 @@ def imageOCR(file,format):
 
   return text
 
-def reduceImgSize(img):
-  height, width = img.shape[:2]
-  aspect_ratio = height / width
-  new_width = width
-  if width > 800:
-    new_width = int(width * .50)
-  new_height = int(new_width * aspect_ratio)
-  img = cv2.resize(img, (new_width, new_height), interpolation=cv2.INTER_AREA)
-  return img
+# def reduceImgSize(img):
+#   height, width = img.shape[:2]
+#   aspect_ratio = height / width
+#   new_width = width
+#   if width > 800:
+#     new_width = int(width * .50)
+#   new_height = int(new_width * aspect_ratio)
+#   img = cv2.resize(img, (new_width, new_height), interpolation=cv2.INTER_AREA)
+#   return img
 
   
