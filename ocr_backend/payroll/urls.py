@@ -1,11 +1,8 @@
-from django.conf.urls import include
 from django.urls import path
 from payroll import views
 
-payroll = [
-  path('scan', views.scan, name='payrolls_scans'),
-]
+app_name = 'payroll'
 
 urlpatterns = [
-  path('payroll/', include(payroll)),
+  path('scan', views.scan, name='scan'),
 ]

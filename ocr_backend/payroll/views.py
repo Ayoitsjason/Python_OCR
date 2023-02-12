@@ -1,6 +1,6 @@
 from django.http.response import HttpResponseBadRequest, HttpResponseNotFound, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from payroll.utils import tesseract 
+from .utils import tesseract 
 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -22,7 +22,5 @@ def scan(request):
     except Exception as e:
       logger.exception(e)
       return HttpResponseBadRequest("Unable to scan")
-  elif request.method == 'GET':
-    return JsonResponse("success", safe=False)
   else:  
-    return HttpResponseNotFound("Not Found")
+    return HttpResponseNotFound("The requested resource could not be found.")
