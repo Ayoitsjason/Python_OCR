@@ -14,6 +14,7 @@ jobs:
 
       - name: Set working directory
         working-directory: /ocr_backend
+
       - name: Set up python
         uses: actions/setup-python@v2
         with:
