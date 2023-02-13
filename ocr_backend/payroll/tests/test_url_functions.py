@@ -1,26 +1,36 @@
-# from django.test import Client
-# from ..views import scan
-# import json
+from django.test import Client
+import io
+from PIL import Image
 
-# # =============== Scan Functions =================
-# def test_scan_post_success():
-#     client = Client()
-#     request = client.post('http://127.0.0.1:8000/payroll/scan', {'format': 'text'}, content_type='multipart/form-data')
-#     request.FILES = {'file': None}
-#     response = scan(request)
-#     assert response.status_code == 200
 
-# def test_scan_post_empty_file():
-#     client = Client()
-#     request = client.post('http://127.0.0.1:8000/payroll/scan', {'format': 'text'}, content_type='multipart/form-data')
-#     request.FILES = {}
-#     response = scan(request)
-#     assert response.status_code == 400
-#     assert json.loads(response.content) == 'Unable to scan'
+def create_dummy_image():
+    # Create an in-memory binary stream
+    image_binary_data = io.BytesIO()
+    
+    # Create a dummy image and save it to the binary stream
+    image = Image.new('RGB', (100, 100), 'white')
+    image.save(image_binary_data, 'JPEG')
+    
+    # Reset the binary stream's position so it can be read from the beginning
+    image_binary_data.seek(0)
+    
+    return image_binary_data
 
-# def test_scan_not_found():
-#     client = Client()
-#     request = client.get('http://127.0.0.1:8000/payroll/scan')
-#     response = scan(request)
-#     assert response.status_code == 404
-#     assert json.loads(response.content) == 'Only Post Request Allowed'
+# =============== Scan Functions =================
+def test_scan_post_success():
+    client = Client()
+    with create_dummy_image() as image_binary_data:
+        response = client.post('http://127.0.0.1:8000/payroll/scan', {'format': 'row text', 'file': image_binary_data})
+        assert response.status_code == 200
+
+def test_scan_post_empty_file():
+    client = Client()
+    response = client.post('http://127.0.0.1:8000/payroll/scan', {'format': 'row text'})
+    assert response.status_code == 400
+    assert response.content == b'Unable to scan'
+
+def test_scan_not_found():
+    client = Client()
+    response = client.get('http://127.0.0.1:8000/payroll/scan')
+    assert response.status_code == 404
+    assert response.content == b'The requested resource could not be found.'
