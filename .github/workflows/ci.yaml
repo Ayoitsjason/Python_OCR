@@ -6,19 +6,16 @@ on:
 
 jobs:
   build_and_test:
-    env:
-      PYTHON_VERSION: 3.8
-
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up python $PYTHON_VERSION
+      - name: Set up python 3.8
         uses: actions/setup-python@v4
         with:
-          python-version: $PYTHON_VERSION
+          python-version: 3.8
 
       - name: Install dependencies
         run: |
