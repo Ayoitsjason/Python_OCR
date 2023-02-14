@@ -20,17 +20,17 @@ def create_dummy_image():
 def test_scan_post_success():
     client = Client()
     with create_dummy_image() as image_binary_data:
-        response = client.post('http://127.0.0.1:8000/payroll/scan', {'format': 'row text', 'file': image_binary_data})
+        response = client.post('/payroll/scan', {'format': 'row text', 'file': image_binary_data})
         assert response.status_code == 200
 
 def test_scan_post_empty_file():
     client = Client()
-    response = client.post('http://127.0.0.1:8000/payroll/scan', {'format': 'row text'})
+    response = client.post('/payroll/scan', {'format': 'row text'})
     assert response.status_code == 400
     assert response.content == b'Unable to scan'
 
 def test_scan_not_found():
     client = Client()
-    response = client.get('http://127.0.0.1:8000/payroll/scan')
+    response = client.get('/payroll/scan')
     assert response.status_code == 404
     assert response.content == b'The requested resource could not be found.'

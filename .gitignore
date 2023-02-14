@@ -1,6 +1,5 @@
 venv
 ocr_backend/.env
-ocr_backend/payroll/tests/imgs
 ocr_backend/.benchmarks
 ocr_backend/.pytest_cache
 OCR-logo
