@@ -5,7 +5,6 @@ from .utils import tesseract
 import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-# Create your views here.
 
 @csrf_exempt
 def scan(request):
